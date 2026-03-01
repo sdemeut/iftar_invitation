@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta property="og:title" content="Ифтарға шақыру 🌙">
+    <meta property="og:description" content="12 наурыз, 18:31 — Zervak мейрамханасы">
+    <title>Ифтарға шақыру</title>
+
+    <!--
+        Noto Serif — Google шрифті, казахский тілді толық қолдайды (қ, ғ, ң, ү, ұ, і, ө, ә)
+        Playfair Display — заголовок үшін, латин + кирилл
+        EB Garamond — ыңғайлы ескі стильді кирилл шрифт
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #c9973a;
+            --gold-light: #e8c97a;
+            --gold-dark: #8a6520;
+            --deep: #1a0e05;
+            --cream: #fdf6e8;
+            --warm: #f5ead0;
+            --text: #3d2b10;
+            --text-soft: #6b4e2a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            /* Казахский тілді дұрыс шығаратын шрифт */
+            font-family: 'Noto Serif', 'Times New Roman', serif;
+            background-color: var(--deep);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ───── INTRO ЭКРАН ───── */
+        #intro-screen {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 60%, #2d1a06, #0d0804);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 200;
+            transition: opacity 1.2s ease;
+            gap: 28px;
+        }
+
+        .intro-moon {
+            font-size: clamp(60px, 15vw, 110px);
+            animation: moonFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(201,151,58,0.5));
+        }
+
+        @keyframes moonFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .intro-title {
+            font-family: 'Playfair Display', 'Noto Serif', serif;
+            font-size: clamp(15px, 4vw, 22px);
+            font-style: italic;
+            color: var(--gold-light);
+            letter-spacing: 0.05em;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .btn-open {
+            padding: 16px 44px;
+            font-size: clamp(16px, 4vw, 20px);
+            font-family: 'Noto Serif', serif;
+            color: var(--deep);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 30px rgba(201,151,58,0.45), 0 0 0 1px rgba(255,255,255,0.1) inset;
+            transition: transform 0.3s, box-shadow 0.3s;
+            letter-spacing: 0.03em;
+            font-weight: 600;
+        }
+
+        .btn-open:hover, .btn-open:active {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(201,151,58,0.6);
+        }
+
+        /* ───── ФОН — ЗВЁЗДНОЕ НЕБО (CSS только) ───── */
+        #main-wrapper {
+            display: none;
+            position: relative;
+            min-height: 100vh;
+            background: 
+                radial-gradient(ellipse at 20% 10%, rgba(60,30,5,0.9) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 90%, rgba(40,20,5,0.8) 0%, transparent 50%),
+                url('bg.jpg') center/cover no-repeat,
+                linear-gradient(160deg, #1c0e03 0%, #2a1505 40%, #1a0c04 100%);
+        }
+
+        /* Звёзды через псевдоэлемент */
+        #main-wrapper::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(1px 1px at 10% 15%, rgba(255,240,200,0.8) 0%, transparent 100%),
+                radial-gradient(1px 1px at 25% 5%, rgba(255,240,200,0.6) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 40% 20%, rgba(255,240,200,0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 60% 8%, rgba(255,240,200,0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 75% 18%, rgba(255,240,200,0.8) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 85% 3%, rgba(255,240,200,0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 92% 25%, rgba(255,240,200,0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 5% 40%, rgba(255,240,200,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 18% 55%, rgba(255,240,200,0.5) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 33% 35%, rgba(255,240,200,0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 50% 45%, rgba(255,240,200,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 70% 30%, rgba(255,240,200,0.5) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 88% 42%, rgba(255,240,200,0.7) 0%, transparent 100%),
+                radial-gradient(1px 1px at 3% 70%, rgba(255,240,200,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 95% 65%, rgba(255,240,200,0.5) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ───── КАРТОЧКА ───── */
+        .card-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 30px 16px;
+        }
+
+        .card {
+            background: rgba(253, 246, 232, 0.96);
+            border-radius: 24px;
+            max-width: 540px;
+            width: 100%;
+            padding: clamp(30px, 6vw, 56px) clamp(24px, 6vw, 52px);
+            box-shadow: 
+                0 0 0 1px rgba(201,151,58,0.3),
+                0 0 0 4px rgba(201,151,58,0.08),
+                0 30px 80px rgba(0,0,0,0.6),
+                0 0 60px rgba(201,151,58,0.1);
+            animation: cardIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Декоративные угловые орнаменты */
+        .card::before, .card::after {
+            content: '✦';
+            position: absolute;
+            color: var(--gold);
+            opacity: 0.25;
+            font-size: 80px;
+            line-height: 1;
+        }
+        .card::before { top: -10px; left: -5px; }
+        .card::after  { bottom: -10px; right: -5px; transform: rotate(180deg); }
+
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(40px) scale(0.97); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Горизонтальная золотая линия-разделитель */
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto;
+        }
+
+        /* ───── ШАПКА КАРТОЧКИ ───── */
+        .card-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .moon-emoji {
+            font-size: clamp(40px, 10vw, 60px);
+            display: block;
+            margin-bottom: 12px;
+            animation: moonFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 2px 8px rgba(201,151,58,0.4));
+        }
+
+        .card-title {
+            /* Playfair Display поддерживает кирилл */
+            font-family: 'Playfair Display', 'Noto Serif', serif;
+            font-size: clamp(22px, 5.5vw, 34px);
+            font-weight: 700;
+            font-style: italic;
+            color: var(--gold-dark);
+            line-height: 1.25;
+            margin-bottom: 6px;
+            text-shadow: 0 1px 3px rgba(138,101,32,0.15);
+        }
+
+        .subtitle-line {
+            font-size: clamp(11px, 2.5vw, 13px);
+            color: var(--gold);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+
+        /* ───── ТЕКСТ ПРИГЛАШЕНИЯ ───── */
+        .invite-text {
+            text-align: center;
+            font-size: clamp(15px, 3.8vw, 18px);
+            line-height: 1.75;
+            color: var(--text-soft);
+            margin: 24px 0;
+            padding: 0 4px;
+        }
+
+        .invite-text .highlight {
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        /* ───── ДЕТАЛИ МЕРОПРИЯТИЯ ───── */
+        .details-block {
+            background: linear-gradient(135deg, rgba(201,151,58,0.08), rgba(201,151,58,0.04));
+            border: 1px solid rgba(201,151,58,0.25);
+            border-radius: 16px;
+            padding: clamp(18px, 4vw, 28px) clamp(18px, 4vw, 32px);
+            margin: 24px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 10px 0;
+            font-size: clamp(15px, 3.8vw, 18px);
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .detail-row + .detail-row {
+            border-top: 1px solid rgba(201,151,58,0.15);
+        }
+
+        .detail-icon {
+            font-size: clamp(18px, 4vw, 22px);
+            flex-shrink: 0;
+            width: 28px;
+            text-align: center;
+            margin-top: 1px;
+        }
+
+        .detail-label {
+            font-size: clamp(11px, 2.5vw, 12px);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .detail-value {
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(15px, 3.8vw, 17px);
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* ───── ТАЙМЕР ───── */
+        .timer-section {
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        .timer-label {
+            font-family: 'Playfair Display', 'Noto Serif', serif;
+            font-style: italic;
+            font-size: clamp(14px, 3.5vw, 17px);
+            color: var(--text-soft);
+            margin-bottom: 18px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: clamp(8px, 2.5vw, 14px);
+        }
+
+        .time-box {
+            background: linear-gradient(160deg, var(--gold), var(--gold-dark));
+            color: white;
+            border-radius: 12px;
+            padding: clamp(12px, 3vw, 18px) clamp(10px, 2.5vw, 16px);
+            min-width: clamp(60px, 16vw, 80px);
+            box-shadow: 0 4px 15px rgba(138,101,32,0.35), 0 1px 0 rgba(255,255,255,0.15) inset;
+        }
+
+        .time-num {
+            display: block;
+            font-family: 'Noto Serif', serif;
+            font-size: clamp(26px, 7vw, 36px);
+            font-weight: 700;
+            line-height: 1;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .time-lbl {
+            display: block;
+            font-size: clamp(10px, 2.5vw, 12px);
+            font-weight: 400;
+            margin-top: 6px;
+            opacity: 0.85;
+            letter-spacing: 0.05em;
+            font-family: 'Noto Serif', serif;
+        }
+
+        /* Финальное сообщение таймера */
+        .time-finished {
+            font-family: 'Playfair Display', 'Noto Serif', serif;
+            font-style: italic;
+            font-size: clamp(20px, 5vw, 26px);
+            color: var(--gold-dark);
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* ───── НИЖНЕЕ ПОЖЕЛАНИЕ ───── */
+        .closing {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(201,151,58,0.2);
+            font-size: clamp(13px, 3.2vw, 15px);
+            color: var(--text-soft);
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .closing strong {
+            display: block;
+            color: var(--gold-dark);
+            font-size: clamp(14px, 3.5vw, 16px);
+            font-style: normal;
+            margin-top: 6px;
+            font-family: 'Playfair Display', 'Noto Serif', serif;
+        }
+
+        /* ───── КНОПКА МУЗЫКИ ───── */
+        /* Кнопка открытия = кнопка Play, скрытая в дизайне */
+        /* Плавающая кнопка мьюта после открытия */
+        #music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(201,151,58,0.15);
+            border: 1px solid rgba(201,151,58,0.4);
+            color: var(--gold);
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+            transition: background 0.3s;
+        }
+        #music-btn:hover { background: rgba(201,151,58,0.3); }
+
+        /* ───── АДАПТИВНОСТЬ ───── */
+        @media (max-width: 380px) {
+            .countdown { gap: 6px; }
+            .time-box { min-width: 54px; }
+        }
+
+        @media (min-height: 900px) {
+            .card-container { align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════ ЭКРАН ПРИВЕТСТВИЯ ══════════════ -->
+<div id="intro-screen">
+    <span class="intro-moon">🌙</span>
+    <p class="intro-title">Рамазан айының береке кешіне<br>сізді шақырамыз</p>
+    <button class="btn-open" onclick="openInvitation()">
+        Ашу &nbsp;✨&nbsp; Открыть
+    </button>
+</div>
+
+<!-- ══════════════ ОСНОВНОЙ КОНТЕНТ ══════════════ -->
+<div id="main-wrapper">
+    <div class="card-container">
+        <div class="card">
+
+            <!-- Шапка -->
+            <div class="card-header">
+                <span class="moon-emoji">🌙</span>
+                <h1 class="card-title">Рамазан —<br>береке мен бірлік айы</h1>
+                <div class="divider" style="margin-top:14px;"></div>
+                <p class="subtitle-line">Ауыз ашар · Ифтар · 2026</p>
+            </div>
+
+            <!-- Текст приглашения -->
+            <p class="invite-text">
+                Қасиетті айдың шуақты күндерінде,<br>
+                <span class="highlight">көктемнің алғашқы лебімен</span> келетін<br>
+                Наурыз айында сіздерді дастархандас болуға шақырамыз.
+                <br><br>
+                Жанымыз жадырап, ниетіміз қабыл болатын<br>
+                берекелі кеште бірге ауыз ашайық!
+            </p>
+
+            <div class="divider"></div>
+
+            <!-- Детали -->
+            <div class="details-block">
+                <div class="detail-row">
+                    <span class="detail-icon">📍</span>
+                    <div>
+                        <span class="detail-label">Мекенжай</span>
+                        <span class="detail-value">«Zervak» мейрамханасы</span>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-icon">📅</span>
+                    <div>
+                        <span class="detail-label">Күні</span>
+                        <span class="detail-value">12 наурыз, сейсенбі</span>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-icon">🕕</span>
+                    <div>
+                        <span class="detail-label">Ауыз ашар уақыты</span>
+                        <span class="detail-value">18:31</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Таймер -->
+            <div class="timer-section">
+                <p class="timer-label">Ауыз ашарға қалды:</p>
+                <div class="countdown" id="countdown">
+                    <div class="time-box">
+                        <span class="time-num" id="days">00</span>
+                        <span class="time-lbl">күн</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-num" id="hours">00</span>
+                        <span class="time-lbl">сағат</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-num" id="minutes">00</span>
+                        <span class="time-lbl">минут</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-num" id="seconds">00</span>
+                        <span class="time-lbl">секунд</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Пожелание -->
+            <div class="closing">
+                Барша ниеттеріңіз қабыл болсын,<br>
+                ауыз ашарыңыз береке әкелсін.
+                <strong>Рамазан Мүбарак! 🤲</strong>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Кнопка мьюта -->
+<button id="music-btn" onclick="toggleMusic()" title="Музыка">🔊</button>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    let musicPlaying = false;
+    const audio = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('music-btn');
+
+    function openInvitation() {
+        const intro = document.getElementById('intro-screen');
+        const main  = document.getElementById('main-wrapper');
+
+        intro.style.opacity = '0';
+        setTimeout(() => {
+            intro.style.display = 'none';
+            main.style.display  = 'block';
+            musicBtn.style.display = 'flex';
+        }, 1200);
+
+        // Запускаем музыку (клик пользователя = разрешение браузера)
+        audio.play().then(() => {
+            musicPlaying = true;
+            musicBtn.textContent = '🔊';
+        }).catch(() => {
+            musicBtn.textContent = '▶️';
+        });
+    }
+
+    function toggleMusic() {
+        if (musicPlaying) {
+            audio.pause();
+            musicBtn.textContent = '🔇';
+            musicPlaying = false;
+        } else {
+            audio.play();
+            musicBtn.textContent = '🔊';
+            musicPlaying = true;
+        }
+    }
+
+    // ── ТАЙМЕР ──
+    const targetDate = new Date("2026-03-12T18:31:00+05:00").getTime();
+
+    function pad(n) { return n < 10 ? '0' + n : n; }
+
+    const interval = setInterval(() => {
+        const now      = Date.now();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+            clearInterval(interval);
+            document.getElementById('countdown').innerHTML =
+                '<p class="time-finished">✨ Ауыз ашар уақыты келді! ✨</p>';
+            return;
+        }
+
+        const d = Math.floor(distance / 86400000);
+        const h = Math.floor((distance % 86400000) / 3600000);
+        const m = Math.floor((distance % 3600000)  / 60000);
+        const s = Math.floor((distance % 60000)    / 1000);
+
+        document.getElementById('days').textContent    = pad(d);
+        document.getElementById('hours').textContent   = pad(h);
+        document.getElementById('minutes').textContent = pad(m);
+        document.getElementById('seconds').textContent = pad(s);
+    }, 1000);
+</script>
+</body>
+</html>
